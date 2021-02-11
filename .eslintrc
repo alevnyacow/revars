@@ -1,0 +1,49 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "rules": {
+        // ban debug stuff
+        "no-console": "error",
+        "no-debugger": "error",
+        // function writing rules
+        "max-params": ["error", 3],
+        "max-depth": ["error", 3],
+        "no-unreachable": "error",
+        "no-else-return": "error",
+        "no-var": "error",
+        "one-var": ["error", "never"],
+        "init-declarations": ["error", "always"],
+        // namings
+        "camelcase": "error",
+        "id-length": [
+            "error",
+            // "x" is for anonymous lambdas, "i" is for iterators in "for" loops
+            { "min": 3, "max": 40, "exceptions": ["x", "i", "id"] }
+        ],
+        // common code style
+        "curly": "error",
+        "prefer-const": "error",
+        "no-redeclare": "error",
+        "prefer-destructuring": [
+            "error",
+            { "object": true, "array": false },
+            { "enforceForRenamedProperties": false }
+        ],
+        "eqeqeq": "error",
+        "default-case": "error",
+        "no-magic-numbers": "off",
+        "@typescript-eslint/no-magic-numbers": ["error", { "ignoreArrayIndexes": true, "ignoreEnums": true, "ignore": [0, 1, -1] }],
+        "no-unused-expressions": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-nested-ternary": "error",
+        "no-empty": "error",
+        "for-direction": "error",
+        "no-sparse-arrays": "error",
+        "yoda": "error"
+    }
+}

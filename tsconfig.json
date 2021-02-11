@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "CommonJS",
+        "lib": ["es2017", "es7", "es6", "dom"],
+        "declaration": true,
+        "outDir": "Transpiled",
+        "strict": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "baseUrl": "Sources",
+        "paths": {
+            "Sources": ["index.ts"]
+        }
+    },
+    "include": ["./Sources"]
+}
