@@ -1,21 +1,43 @@
-import { spreadingProxy } from "./utils";
+import { v4 } from "uuid";
+import { useEffect, useState, useRef } from "react";
+import { spreadingProxy } from "./Utils";
+import { callRerenders, subscribe, unsubscribe } from "./Services";
 
-const proxyGen = spreadingProxy({
-    set: (target, prop, value) => {
-        // eslint-disable-next-line no-console
-        console.log("hello");
-        // eslint-disable-next-line no-console
-        console.log(prop);
-        // eslint-disable-next-line no-console
-        console.log(value);
+const toRevarProxy = (revarId: string) =>
+    spreadingProxy({
+        set: (target, prop, value) => {
+            if (typeof value === "object" && value !== null) {
+                value = toRevarProxy(revarId)(value);
+            }
+            (target as any)[prop] = value;
+            callRerenders(revarId);
+            return true;
+        }
+    });
 
-        (target as any)[prop] = value;
+export function createUseRevar<T extends object>(data: T) {
+    const revarId = v4();
+    const revarProxy = toRevarProxy(revarId)(data);
 
-        return true;
+    function useRevar() {
+        try {
+            const rerendererId = useRef(v4());
+            const [, setNewFlag] = useState(false);
+            const rerenderer = () => setNewFlag((x) => !x);
+
+            useEffect(() => {
+                subscribe(revarId, rerendererId.current, rerenderer);
+
+                return () => {
+                    unsubscribe(revarId, rerendererId.current);
+                };
+            }, []);
+
+            return revarProxy;
+        } catch {
+            return revarProxy;
+        }
     }
-});
 
-const d23 = proxyGen({ a44: { b2222: 11 }, b55: 15 });
-
-d23.a44.b2222 = 55;
-d23.b55 = 4;
+    return useRevar;
+}
