@@ -22,8 +22,8 @@ export function createUseRevar<T extends object>(data: T) {
     function useRevar() {
         try {
             const rerendererId = useRef(v4());
-            const [, setNewFlag] = useState(false);
-            const rerenderer = () => setNewFlag((x) => !x);
+            const [, setNewFlag] = useState("");
+            const rerenderer = () => setNewFlag(v4());
 
             useEffect(() => {
                 subscribe(revarId, rerendererId.current, rerenderer);
