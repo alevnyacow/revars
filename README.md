@@ -1,15 +1,15 @@
 
 # ![Revars logo](/revars.svg "Logo")
 
-# About
+# 💫 About
 
 Revars (React variables) is a React **state management system** which is
 
 - mutable
-- simple
+- simple 
 - no boilerplate code needed
 
-# API
+# 🌟 API
 
 ## **createUseRevar**
 
@@ -24,7 +24,7 @@ It takes initial revar value as a parameter and returns the function which can b
 - If you use it **as a hook in a functional React component** it returns current revar value and makes component rerender when this revar changes 
 - If you use it **anywhere outside of a functional React component** it just returns current revar value 
 
-# Example
+# ✨ Example
 
 Let's take a look at a little counter example. We will be using revars in functional React components and in a independent service.  
 
@@ -101,6 +101,8 @@ export const CounterApp: React.FC = () => {
 }
 ```
 
-# Warning
+# 💥 Warning
 
 Package is still under development and pretty unstable. Do not use it in production code for now.
+
+Thank you for choosing revars! 
