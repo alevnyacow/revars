@@ -1,5 +1,5 @@
 
-![Revars logo](/revars.svg "Logo")
+# ![Revars logo](/revars.svg "Logo")
 
 # About
 

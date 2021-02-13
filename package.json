@@ -1,6 +1,6 @@
 {
     "name": "revars",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",
@@ -14,6 +14,14 @@
         "check": "npm run lint && npm run test",
         "build": "npm run clean_transpiled && tsc"
     },
+    "keywords": [
+        "react",
+        "state",
+        "state-management",
+        "management",
+        "mutable",
+        "global"
+    ],
     "devDependencies": {
         "@types/jest": "^25.1.4",
         "@types/react": "^17.0.2",
