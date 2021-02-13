@@ -15,9 +15,9 @@ const toRevarProxy = (revarId: string) =>
         }
     });
 
-export function createUseRevar<T extends object>(data: T) {
+export function createUseRevar<T extends object>(initialState: T) {
     const revarId = v4();
-    const revarProxy = toRevarProxy(revarId)(data);
+    const revarProxy = toRevarProxy(revarId)(initialState);
 
     function useRevar() {
         try {
