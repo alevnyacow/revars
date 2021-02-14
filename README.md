@@ -16,7 +16,7 @@ Revars (React variables) is a React **state management system** which is
 
 # 📚 Core concept
 
-Basically, every revar is *just a javascript object with mutable fields*. Core concept is dead easy - function you obtain via [*createUseRevar*](#create-use-revar) can be used **anywhere**. If it's used inside of a functional component **as a hook** you obtain revar value and this component will be rerendered every time this revar is changed. If it's used anywhere **outside of a functional component** you just obtain revar value and you are still able to modify it.
+Basically, every revar is *just a javascript object with mutable fields*. Core concept is dead easy - function you obtain via [*createUseRevar*](#create-use-revar) can be used **anywhere**. If it's used inside of a functional component **as a hook** you obtain revar value and this component will be rerendered every time this revar is changed. If it's used anywhere **outside of a functional component** you just obtain revar value and you are still able to modify it. Simple and powerful! 🚀
 
 # 📔 API
 
@@ -32,7 +32,7 @@ Returns a function which obtains revar value and provides functional components 
 
 # ✨ Example
 
-Let's take a look at a little counter example. We will be using revars in functional React components and in a independent service. If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s) 🚀
+Let's take a look at a little counter example. We will be using revars in functional React components and in a independent service. If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
 
 
 ## 🗒 state.ts
