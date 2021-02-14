@@ -41,7 +41,7 @@ test("nested number proxy at third level", () => {
         set: (targetObject, propertyName, propertyValue) => {
             console.log(propertyName);
             /**
-                Do we need this?
+                // ! Excess set calls
                 if (typeof propertyValue === "object" && propertyValue !== null) {
                     propertyValue = toProxy(propertyValue);
                 }

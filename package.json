@@ -1,7 +1,7 @@
 {
     "name": "revars",
     "description": "Simple mutable React state management system ☕",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",
