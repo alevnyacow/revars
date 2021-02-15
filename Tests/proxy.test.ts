@@ -1,14 +1,20 @@
-import { spreadingProxy } from "../Sources/Utils";
+import { v4 } from "uuid";
+import { createRevarProxy } from "../Sources/Services";
+
+let revarId = "";
+
+beforeEach(() => {
+    revarId = v4();
+});
 
 test("plain number proxy", () => {
     let count = 0;
     const source = { a: 0 };
-    const proxy = spreadingProxy({
-        set: (targetObject, propertyName, propertyValue) => {
-            count += propertyValue as number;
-            return true;
+    const proxy = createRevarProxy((revarId, propName, propValue) => {
+        if (typeof propValue === "number") {
+            count += propValue;
         }
-    })(source);
+    })(revarId)(source);
 
     proxy.a = 10;
     proxy.a = 20;
@@ -20,47 +26,61 @@ test("plain number proxy", () => {
 test("plain string proxy", () => {
     let resultString = "";
     const source = { a: "" };
-    const proxy = spreadingProxy({
-        set: (targetObject, propertyName, propertyValue) => {
-            resultString += propertyValue;
-            return true;
+    const proxy = createRevarProxy((revarId, propName, propValue) => {
+        if (typeof propValue === "string") {
+            resultString += propValue;
         }
-    })(source);
+    })(revarId)(source);
 
-    proxy.a += "hello";
-    proxy.a += "cool";
-    proxy.a += "world";
+    proxy.a += "a";
+    proxy.a += "b";
+    proxy.a += "c";
 
-    expect(resultString).toBe("hellocoolworld");
+    expect(resultString).toBe("aababc");
 });
 
 test("nested number proxy at third level", () => {
     let count = 0;
     const source = { a: { b: { c: 0 } } };
-    const toProxy = spreadingProxy({
-        set: (targetObject, propertyName, propertyValue) => {
-            console.log(propertyName);
-            /**
-                // ! Excess set calls
-                if (typeof propertyValue === "object" && propertyValue !== null) {
-                    propertyValue = toProxy(propertyValue);
-                }
-             */
-
-            (targetObject as any)[propertyName] = propertyValue;
-
-            if (typeof propertyValue === "number") {
-                console.log(propertyValue);
-                count += propertyValue;
-            }
-
-            return true;
+    const proxy = createRevarProxy((revarId, propName, propValue) => {
+        if (typeof propValue === "number") {
+            count += propValue;
         }
-    });
+    })(revarId)(source);
 
-    const proxy = toProxy(source);
-
+    proxy.a.b = { c: 0 };
     proxy.a.b.c = 10;
 
     expect(count).toBe(10);
 });
+
+// test("nested number proxy at third level", () => {
+//     let count = 0;
+//     const source = { a: { b: { c: 0 } } };
+//     const toProxy = spreadingProxy({
+//         set: (targetObject, propertyName, propertyValue) => {
+//             console.log(propertyName);
+//             /**
+//                 // ! Excess set calls
+//                 if (typeof propertyValue === "object" && propertyValue !== null) {
+//                     propertyValue = toProxy(propertyValue);
+//                 }
+//              */
+
+//             (targetObject as any)[propertyName] = propertyValue;
+
+//             if (typeof propertyValue === "number") {
+//                 console.log(propertyValue);
+//                 count += propertyValue;
+//             }
+
+//             return true;
+//         }
+//     });
+
+//     const proxy = toProxy(source);
+
+//     proxy.a.b.c = 10;
+
+//     expect(count).toBe(10);
+// });
