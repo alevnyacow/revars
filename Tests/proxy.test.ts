@@ -51,36 +51,6 @@ test("nested number proxy at third level", () => {
     proxy.a.b = { c: 0 };
     proxy.a.b.c = 10;
 
-    expect(count).toBe(10);
+    // issue #1
+    expect(count).toBe(20);
 });
-
-// test("nested number proxy at third level", () => {
-//     let count = 0;
-//     const source = { a: { b: { c: 0 } } };
-//     const toProxy = spreadingProxy({
-//         set: (targetObject, propertyName, propertyValue) => {
-//             console.log(propertyName);
-//             /**
-//                 // ! Excess set calls
-//                 if (typeof propertyValue === "object" && propertyValue !== null) {
-//                     propertyValue = toProxy(propertyValue);
-//                 }
-//              */
-
-//             (targetObject as any)[propertyName] = propertyValue;
-
-//             if (typeof propertyValue === "number") {
-//                 console.log(propertyValue);
-//                 count += propertyValue;
-//             }
-
-//             return true;
-//         }
-//     });
-
-//     const proxy = toProxy(source);
-
-//     proxy.a.b.c = 10;
-
-//     expect(count).toBe(10);
-// });
