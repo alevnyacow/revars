@@ -32,7 +32,7 @@ Returns a function which obtains revar value and provides functional components 
 
 # ✨ Example
 
-Let's take a look at a little counter example. We will be using revars in functional React components and in a independent service. If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
+Let's take a look at a little counter example. We will be using revars in functional React components and in an independent service. If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
 
 
 ## 🗒 state.ts
