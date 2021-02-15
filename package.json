@@ -1,7 +1,7 @@
 {
     "name": "revars",
-    "description": "Simple mutable React state management system ☕",
-    "version": "1.0.9",
+    "description": "Simple mutable React state management system",
+    "version": "1.0.10",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",
@@ -17,6 +17,7 @@
         "build": "npm run clean_transpiled && tsc"
     },
     "keywords": [
+        "front-end",
         "react",
         "state",
         "state-management",
