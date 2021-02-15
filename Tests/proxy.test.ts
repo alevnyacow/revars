@@ -1,6 +1,9 @@
-import { v4 } from "uuid";
-import { createRevarProxy } from "../Sources/Services";
+// @ts-nocheck
 
+import { v4 } from "uuid";
+import { config } from "dotenv";
+import { createRevarProxy } from "../Sources/Services";
+config();
 let revarId = "";
 
 beforeEach(() => {
@@ -20,7 +23,10 @@ test("plain number proxy", () => {
     proxy.a = 20;
     proxy.a = 30;
 
-    expect(count).toBe(60);
+    proxy.b = { f: 44 };
+    proxy.b.f = 60;
+
+    expect(count).toBe(120);
 });
 
 test("plain string proxy", () => {
@@ -48,9 +54,12 @@ test("nested number proxy at third level", () => {
         }
     })(revarId)(source);
 
-    proxy.a.b = { c: 0 };
+    proxy.a.b = { c: 0, d: [] };
     proxy.a.b.c = 10;
+    console.log(proxy);
+    proxy.a.b.d.push({ b: 64 });
 
-    // issue #1
-    expect(count).toBe(20);
+    proxy.a.b.d[0].b = 55;
+
+    expect(count).toBe(65);
 });
