@@ -1,9 +1,7 @@
 // @ts-nocheck
 
 import { v4 } from "uuid";
-import { config } from "dotenv";
 import { createRevarProxy } from "../Sources/Services";
-config();
 let revarId = "";
 
 beforeEach(() => {

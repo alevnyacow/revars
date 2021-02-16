@@ -1,7 +1,7 @@
 {
     "name": "revars",
     "description": "Simple mutable React state management system",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",
@@ -43,7 +43,6 @@
         "preset": "ts-jest"
     },
     "dependencies": {
-        "dotenv": "^8.2.0",
         "uuid": "^8.3.2"
     }
 }

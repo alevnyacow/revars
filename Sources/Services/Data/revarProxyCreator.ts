@@ -1,4 +1,5 @@
 import { spreadingProxy } from "../../Utils";
+import { isMarkedObject } from "./revarProxyMarker";
 
 export function createRevarProxy(
     handler: (
@@ -11,7 +12,7 @@ export function createRevarProxy(
         if (
             typeof value === "object" &&
             value !== null &&
-            !value[process.env.IS_PROXIED_FIELD_NAME!]
+            !isMarkedObject(value)
         ) {
             return createRevarProxy(handler)(revarId)(value);
         }

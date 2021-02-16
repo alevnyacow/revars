@@ -1,6 +1,3 @@
-import { config as configurateDotenv } from "dotenv";
-configurateDotenv();
-
 import { v4 } from "uuid";
 import { useEffect, useState, useRef } from "react";
 import { createRevarProxy } from "./Services";
