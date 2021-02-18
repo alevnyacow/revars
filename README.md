@@ -16,23 +16,67 @@ Revars (React variables) is a React **state management system** which is
 
 # 📚 Core concept
 
-Basically, every revar is just a javascript object with mutable fields. This object can have nested objects at any level and arrays. Core concept is dead easy - function you obtain via [*createUseRevar*](#create-use-revar) can be used **anywhere**. If it's used inside of a functional component **as a hook** you obtain revar value and this component will be rerendered every time this revar is changed. If it's used anywhere **outside of a functional component** you just obtain revar value and you are still able to modify it. Simple and powerful! 🚀
+Basically, every revar is just a javascript object with mutable fields. This object can have nested objects at any level and arrays. Core concept is dead easy - you use [*buildRevar*](#create-revar) to obtain array of two elements. First element is the revar object itself (which is absolutely mutable), second element is a hook you can use in functional components to make them rerender when accorded revar is somehow changed. Simple and powerful! 🚀
 
 # 📔 API
 
 There is one method you can import from this package.
 
-## <a id='create-use-revar'></a>**createUseRevar**
+## <a id='create-use-revar'></a>**buildRevar**
 
 ```ts
-function createUseRevar<T extends object>(initialState: T): () => T
+function buildRevar<T extends object>(initialState: T): [T, () => void]
 ```
 
-Returns a function which obtains revar value and provides functional components to be rerendered on revar changes.
+Returns a tuple of revar itself and a hook which can be used for functional components rerendering.
 
 # ✨ Example
 
-If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
+```ts
+import React, { useEffect } from "react";
+import { buildRevar } from "revars";
+
+const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
+
+function useCounterIncrement() {
+    useEffect(() => {
+        let interval = setInterval(() => {
+            // modifying revar in hook
+            counter.currentValue++;
+        }, 1000);
+
+        return () => clearInterval(interval); 
+    })
+}
+
+function setRandomCounterValue() {
+    // modifying revar in independent module
+    counter.currentValue = Math.random();
+}
+
+function counterIsMoreThan10() {
+    // obtaining revar in independent module
+    return counter.currentValue > 10;
+}
+
+function Counter() {
+    // hook we use to make component rerender on every revar change
+    useCounterRerender();
+    useCounterIncrement();
+
+    const resetCounter = () => {
+        // modifying revar in component
+        counter.currentValue = 0;
+    }
+
+    return <div>
+        <span>Counter value - {counter.currentValue}</span>
+        {counterIsMoreThan10() && <span> ( already more than 10!)</span>}
+        <button onClick={() => resetCounter()}>Reset counter</button>
+        <button onClick={() => setRandomCounterValue()}>Set random counter</button>
+    </div>
+}
+```
 
 # 💥 Warning
 
