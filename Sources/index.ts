@@ -19,5 +19,5 @@ export function buildRevar<T extends object>(initialState: T) {
         }, []);
     }
 
-    return [revar, useRevarRerender];
+    return [revar, useRevarRerender] as [T, () => void];
 }
