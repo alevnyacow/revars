@@ -41,6 +41,7 @@ const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
 function useCounterIncrement() {
     useEffect(() => {
         let interval = setInterval(() => {
+            // modifying revar in hook
             counter.currentValue++;
         }, 1000);
 
@@ -48,15 +49,25 @@ function useCounterIncrement() {
     })
 }
 
+function setRandomCounterValue() {
+    // modifying revar in independent module
+    counter.currentValue = Math.random();
+}
+
 function Counter() {
+    // hook we use to make component rerender on every revar change
     useCounterRerender();
     useCounterIncrement();
 
-    const resetCounter = () => counter.currentValue = 0;
+    const resetCounter = () => {
+        // modifying revar in component
+        counter.currentValue = 0;
+    }
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        <button onClick={resetCounter}>Reset counter</button>
+        <button onClick={() => resetCounter()}>Reset counter</button>
+        <button onClick={() => setRandomCounterValue()}>Set random counter</button>
     </div>
 }
 ```
