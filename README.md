@@ -30,7 +30,9 @@ function buildRevar<T extends object>(initialState: T): [T, () => void]
 
 Returns a tuple of revar itself and a hook which can be used for functional components rerendering.
 
-# ✨ Example
+# ✨ [Example](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)
+
+Here is some basic example. Please feel free to take a look at more complex example at code sandbox (click on "Example" link).
 
 ```ts
 import React, { useEffect } from "react";
