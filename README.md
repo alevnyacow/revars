@@ -28,9 +28,13 @@ There is one method you can import from this package.
 function buildRevar<T extends object>(initialState: T): [T, () => void]
 ```
 
-Returns array of the revar itself and hook which can be used for functional components rerendering.
+Returns a tuple of revar itself and a hook which can be used for functional components rerendering.
 
-Using example:
+# ✨ Example
+
+If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
+
+You can also take a look at simple code example right here:
 
 ```ts
 import React, { useEffect } from "react";
@@ -54,6 +58,11 @@ function setRandomCounterValue() {
     counter.currentValue = Math.random();
 }
 
+function counterIsMoreThan10() {
+    // obtaining revar in independent module
+    return counter.currentValue > 10;
+}
+
 function Counter() {
     // hook we use to make component rerender on every revar change
     useCounterRerender();
@@ -66,15 +75,12 @@ function Counter() {
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
+        {counterIsMoreThan10() && <span> ( already more than 10!)</span>}
         <button onClick={() => resetCounter()}>Reset counter</button>
         <button onClick={() => setRandomCounterValue()}>Set random counter</button>
     </div>
 }
 ```
-
-# ✨ Example
-
-If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
 
 # 💥 Warning
 
