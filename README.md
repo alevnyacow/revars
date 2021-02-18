@@ -32,10 +32,6 @@ Returns a tuple of revar itself and a hook which can be used for functional comp
 
 # ✨ Example
 
-If you want to see revars in action [feel free to take a look at complex example at codesandbox!](https://codesandbox.io/s/revars-simple-example-kqh0s)
-
-You can also take a look at simple code example right here:
-
 ```ts
 import React, { useEffect } from "react";
 import { buildRevar } from "revars";
