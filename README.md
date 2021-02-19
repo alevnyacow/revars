@@ -32,7 +32,7 @@ Returns a tuple of revar itself and a hook which can be used for functional comp
 
 # ✨ [Example](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)
 
-Here is some basic example. Please feel free to take a look at more complex example at code sandbox (click on "Example" link).
+Here is some basic example. Please feel free to take a look at more complex example at code sandbox (click on "Example").
 
 ```ts
 import React, { useEffect } from "react";
@@ -43,7 +43,6 @@ const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
 function useCounterIncrement() {
     useEffect(() => {
         let interval = setInterval(() => {
-            // modifying revar in hook
             counter.currentValue++;
         }, 1000);
 
@@ -51,31 +50,17 @@ function useCounterIncrement() {
     })
 }
 
-function setRandomCounterValue() {
-    // modifying revar in independent module
-    counter.currentValue = Math.random();
-}
+const resetCounter = () => { counter.currentValue = 0; }
 
-function counterIsMoreThan10() {
-    // obtaining revar in independent module
-    return counter.currentValue > 10;
-}
 
 function Counter() {
     // hook we use to make component rerender on every revar change
     useCounterRerender();
     useCounterIncrement();
 
-    const resetCounter = () => {
-        // modifying revar in component
-        counter.currentValue = 0;
-    }
-
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        {counterIsMoreThan10() && <span> ( already more than 10!)</span>}
         <button onClick={() => resetCounter()}>Reset counter</button>
-        <button onClick={() => setRandomCounterValue()}>Set random counter</button>
     </div>
 }
 ```
