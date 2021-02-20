@@ -50,13 +50,12 @@ function useCounterIncrement() {
     })
 }
 
-const resetCounter = () => { counter.currentValue = 0; }
-
-
 function Counter() {
     // hook we use to make component rerender on every revar change
     useCounterRerender();
     useCounterIncrement();
+
+    const resetCounter = () => { counter.currentValue = 0; }
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
