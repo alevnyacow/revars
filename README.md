@@ -10,14 +10,13 @@
 
 Revars (React variables) is a React **state management system** which is
 
+- simple
 - dependency-free
-- mutable
-- simple 
 - no boilerplate code needed
 
 # 📚 Core concept
 
-Basically, every revar is just a javascript object with mutable fields. This object can have nested objects at any level and arrays. Core concept is dead easy - you use [*buildRevar*](#build-revar) to obtain array of two elements. First element is the revar object itself (which is absolutely mutable), second element is a hook you can use in functional components to make them rerender when accorded revar is somehow changed. Simple and powerful! 🚀
+Basically, every revar is just a javascript object with mutable fields. This object can have nested objects at any level and arrays. Core concept is dead easy - you use [*buildRevar*](#build-revar) to obtain array of two elements. First element is the revar object itself (which can be changed anywhere), second element is a hook you can use in functional components to make them rerender when accorded revar is somehow changed. Simple and powerful! 🚀
 
 # 📔 API
 
