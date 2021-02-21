@@ -1,4 +1,4 @@
-const markerFieldName = "950fcad6-a930-4085-9793-25eeb09482ab";
+const markerFieldName = "`*`";
 const markerValue = true;
 
 export const isMarkedObject = (target: any) =>

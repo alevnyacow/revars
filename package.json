@@ -1,7 +1,7 @@
 {
     "name": "revars",
-    "description": "Simple mutable React state management system",
-    "version": "3.0.3",
+    "description": "Dead-easy React state management",
+    "version": "4.0.0",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",
@@ -17,18 +17,14 @@
         "build": "npm run clean_transpiled && tsc"
     },
     "keywords": [
-        "front-end",
+        "state management",
         "react",
-        "state",
-        "state-management",
-        "management",
-        "mutable",
-        "global"
+        "front-end",
+        "state"
     ],
     "devDependencies": {
         "@types/jest": "^25.1.4",
         "@types/react": "^17.0.2",
-        "@types/uuid": "^8.3.0",
         "@typescript-eslint/eslint-plugin": "^2.28.0",
         "@typescript-eslint/parser": "^2.28.0",
         "del-cli": "^3.0.0",
@@ -42,7 +38,5 @@
     "jest": {
         "preset": "ts-jest"
     },
-    "dependencies": {
-        "uuid": "^8.3.2"
-    }
+    "dependencies": {}
 }

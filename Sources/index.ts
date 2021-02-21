@@ -1,16 +1,20 @@
-import { v4 } from "uuid";
 import { useEffect, useState, useRef } from "react";
-import { createRevarProxy } from "./Services";
-import { callRerenders, subscribe, unsubscribe } from "./Services";
+import {
+    createRevarProxy,
+    callRerenders,
+    subscribe,
+    unsubscribe
+} from "./Services";
+import { getRandomString } from "./Utils";
 
 export function buildRevar<T extends object>(initialState: T) {
-    const revarId = v4();
+    const revarId = getRandomString();
     const revar = createRevarProxy(callRerenders)(revarId)(initialState);
 
     function useRevarRerender() {
-        const rerendererId = useRef(v4());
+        const rerendererId = useRef(getRandomString());
         const [, setNewFlag] = useState("");
-        const rerenderer = () => setNewFlag(v4());
+        const rerenderer = () => setNewFlag(getRandomString());
 
         useEffect(() => {
             subscribe(revarId, rerendererId.current, rerenderer);
