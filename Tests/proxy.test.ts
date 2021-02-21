@@ -1,11 +1,11 @@
 // @ts-nocheck
 
-import { v4 } from "uuid";
 import { createRevarProxy } from "../Sources/Services";
+import { getRandomString } from "../Sources/Utils";
 let revarId = "";
 
 beforeEach(() => {
-    revarId = v4();
+    revarId = getRandomString();
 });
 
 test("plain number proxy", () => {
