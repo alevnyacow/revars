@@ -38,7 +38,10 @@ const [analytics, useAnalyticsRerender] = buildRevar<Analytics>({
 });
 
 // You are able to use any count of revars in application.
-const [rectangle, useRectangleRerender] = buildRevar({ width: 0, height: 0 });
+const [rectangle, useRectangleRerender] = buildRevar({ 
+    width: 0, 
+    height: 0 
+});
 ```
 
 Simple and powerful! 🚀
@@ -70,7 +73,9 @@ const CounterService = {
 
 function useCounterIncrement() {
     useEffect(() => {
-        const interval = setInterval(() => CounterService.incrementCounter(), 1000);
+        const interval = setInterval(() => {
+            CounterService.incrementCounter();
+        }, 1000);
 
         return () => clearInterval(interval); 
     })
@@ -83,7 +88,9 @@ function Counter() {
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        <button onClick={() => CounterService.resetCounter()}>Reset counter</button>
+        <button onClick={() => CounterService.resetCounter()}>
+            Reset counter
+        </button>
     </div>
 }
 ```
