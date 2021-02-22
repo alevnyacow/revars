@@ -1,7 +1,7 @@
 {
     "name": "revars",
     "description": "Dead easy React state management",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",
