@@ -11,11 +11,13 @@ beforeEach(() => {
 test("plain number proxy", () => {
     let count = 0;
     const source = { a: 0 };
-    const proxy = createRevarProxy((revarId, propName, propValue) => {
-        if (typeof propValue === "number") {
-            count += propValue;
+    const proxy = createRevarProxy([
+        (revarId, propName, propValue) => {
+            if (typeof propValue === "number") {
+                count += propValue;
+            }
         }
-    })(revarId)(source);
+    ])(revarId)(source);
 
     proxy.a = 10;
     proxy.a = 20;
@@ -30,11 +32,13 @@ test("plain number proxy", () => {
 test("plain string proxy", () => {
     let resultString = "";
     const source = { a: "" };
-    const proxy = createRevarProxy((revarId, propName, propValue) => {
-        if (typeof propValue === "string") {
-            resultString += propValue;
+    const proxy = createRevarProxy([
+        (revarId, propName, propValue) => {
+            if (typeof propValue === "string") {
+                resultString += propValue;
+            }
         }
-    })(revarId)(source);
+    ])(revarId)(source);
 
     proxy.a += "a";
     proxy.a += "b";
@@ -46,11 +50,13 @@ test("plain string proxy", () => {
 test("nested number proxy at third level", () => {
     let count = 0;
     const source = { a: { b: { c: 0 } } };
-    const proxy = createRevarProxy((revarId, propName, propValue) => {
-        if (typeof propValue === "number") {
-            count += propValue;
+    const proxy = createRevarProxy([
+        (revarId, propName, propValue) => {
+            if (typeof propValue === "number") {
+                count += propValue;
+            }
         }
-    })(revarId)(source);
+    ])(revarId)(source);
 
     proxy.a.b = { c: 0, d: [] };
     proxy.a.b.c = 10;
