@@ -56,7 +56,7 @@ There is one method you can import from this package.
 function buildRevar<T extends object>(initialState: T): [T, () => void]
 ```
 
-Returns a tuple of a revar itself and a hook which provides functional components rerendering.
+Returns a tuple of a Revar itself and a hook which provides functional components rerendering.
 
 # ✨ Simple example
 
