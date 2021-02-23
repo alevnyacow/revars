@@ -37,7 +37,7 @@ const [analytics, useAnalyticsRerender] = buildRevar<Analytics>({
     events: []
 });
 
-// You are able to use any count of revars in application.
+// You are able to use any count of Revars in application.
 const [rectangle, useRectangleRerender] = buildRevar({ 
     width: 0, 
     height: 0 
