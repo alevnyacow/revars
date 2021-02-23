@@ -21,6 +21,7 @@ When you use [buildRevar](#build-revar) method, you obtain a tuple of two elemen
 
 - **First element** is a Revar itself. Basically it behaves like a usual object with mutable fields so you can modify it anywhere in your code.
 - **Second element** is a React hook. Use it in functional components to make them rerender when according revar is modified.
+- **Third element** is a function can be used to add plugins for current Revar.
 
 Take a look at following example:
 
@@ -31,10 +32,15 @@ type Analytics = {
     events: Array<string>;
 };
 
-const [analytics, useAnalyticsRerender] = buildRevar<Analytics>({ 
+const [analytics, useAnalyticsRerender, addAnalyticsPlugins] = buildRevar<Analytics>({ 
     clicks: 0, 
     secondsSpentOnPage: 0,
     events: []
+});
+
+// plugin adding example
+addAnalyticsPlugins((revarId, propName, propValue) => {
+    console.log(revarId + " has now " + propName + " set to " + propValue);
 });
 
 // You are able to use any count of Revars in application.
@@ -53,7 +59,22 @@ There is one method you can import from this package.
 ## <a id='build-revar'></a>**buildRevar**
 
 ```ts
-function buildRevar<T extends object>(initialState: T): [T, () => void]
+function buildRevar<T extends object>(initialState: T): [
+    // Revar
+    T,
+
+    // hook
+    () => void,
+
+    // plugin adder
+    (
+        plugin: (
+            revarId: string, 
+            propName?: string | number | symbol, 
+            propValue: any
+        ) => void
+    ) => void
+]
 ```
 
 Returns a tuple of a Revar itself and a hook which provides functional components rerendering.

@@ -39,7 +39,7 @@ export function createRevarProxy(
                             );
                             target.push(...params);
                             handlers.forEach((handler) =>
-                                handler(revarId, prop, prop)
+                                handler(revarId, prop, params)
                             );
                         };
                     }
@@ -47,7 +47,7 @@ export function createRevarProxy(
                         return function () {
                             const result = target.pop();
                             handlers.forEach((handler) =>
-                                handler(revarId, prop, prop)
+                                handler(revarId, prop, result)
                             );
                             return result;
                         };
@@ -56,7 +56,7 @@ export function createRevarProxy(
                         return function () {
                             const result = target.shift();
                             handlers.forEach((handler) =>
-                                handler(revarId, prop, prop)
+                                handler(revarId, prop, result)
                             );
                             return result;
                         };
