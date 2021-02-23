@@ -7,9 +7,16 @@ import {
 } from "./Services";
 import { getRandomString } from "./Utils";
 
+type Plugin = (
+    revarId: string,
+    propertyName?: string | number | symbol,
+    propertyValue?: any
+) => void;
+
 export function buildRevar<T extends object>(initialState: T) {
     const revarId = getRandomString();
-    const revar = createRevarProxy(callRerenders)(revarId)(initialState);
+    const plugins: Array<Plugin> = [callRerenders];
+    const revar = createRevarProxy(plugins)(revarId)(initialState);
 
     function useRevarRerender() {
         const rerendererId = useRef(getRandomString());
@@ -23,5 +30,13 @@ export function buildRevar<T extends object>(initialState: T) {
         }, []);
     }
 
-    return [revar, useRevarRerender] as [T, () => void];
+    function addPlugin(plugin: Plugin) {
+        plugins.push(plugin);
+    }
+
+    return [revar, useRevarRerender, addPlugin] as [
+        T,
+        () => void,
+        (plugin: Plugin) => void
+    ];
 }
