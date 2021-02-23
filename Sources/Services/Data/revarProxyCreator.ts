@@ -2,11 +2,13 @@ import { spreadingProxy } from "../../Utils";
 import { isMarkedObject } from "./revarProxyMarker";
 
 export function createRevarProxy(
-    handler: (
-        revarId: string,
-        propertyName: string | number | symbol,
-        propertyValue: any
-    ) => void
+    handlers: Array<
+        (
+            revarId: string,
+            propertyName: string | number | symbol,
+            propertyValue: any
+        ) => void
+    >
 ) {
     function toRevarProxyIfNeeded(revarId: string, value: any) {
         if (
@@ -14,7 +16,7 @@ export function createRevarProxy(
             value !== null &&
             !isMarkedObject(value)
         ) {
-            return createRevarProxy(handler)(revarId)(value);
+            return createRevarProxy(handlers)(revarId)(value);
         }
 
         return value;
@@ -25,7 +27,7 @@ export function createRevarProxy(
             set: (target, prop, value) => {
                 value = toRevarProxyIfNeeded(revarId, value);
                 (target as any)[prop] = value;
-                handler(revarId, prop, value);
+                handlers.forEach((handler) => handler(revarId, prop, value));
                 return true;
             },
             get: (target, prop) => {
@@ -36,20 +38,26 @@ export function createRevarProxy(
                                 toRevarProxyIfNeeded(revarId, x)
                             );
                             target.push(...params);
-                            handler(revarId, prop, prop);
+                            handlers.forEach((handler) =>
+                                handler(revarId, prop, prop)
+                            );
                         };
                     }
                     if (prop === "pop") {
                         return function () {
                             const result = target.pop();
-                            handler(revarId, prop, prop);
+                            handlers.forEach((handler) =>
+                                handler(revarId, prop, prop)
+                            );
                             return result;
                         };
                     }
                     if (prop === "shift") {
                         return function () {
                             const result = target.shift();
-                            handler(revarId, prop, prop);
+                            handlers.forEach((handler) =>
+                                handler(revarId, prop, prop)
+                            );
                             return result;
                         };
                     }
