@@ -17,7 +17,7 @@ Revars (React variables) is a React **state management system** which is
 
 # 📚 Core concept
 
-When you use [buildRevar](#build-revar) method, you obtain a tuple of two elements.
+When you use [buildRevar](#build-revar) method, you obtain a tuple of three elements.
 
 - **First element** is a Revar itself. Basically it behaves like a usual object with mutable fields so you can modify it anywhere in your code.
 - **Second element** is a React hook. Use it in functional components to make them rerender when according revar is modified.
@@ -32,15 +32,10 @@ type Analytics = {
     events: Array<string>;
 };
 
-const [analytics, useAnalyticsRerender, addAnalyticsPlugins] = buildRevar<Analytics>({ 
+const [analytics, useAnalyticsRerender] = buildRevar<Analytics>({ 
     clicks: 0, 
     secondsSpentOnPage: 0,
     events: []
-});
-
-// plugin adding example
-addAnalyticsPlugins((revarId, propName, propValue) => {
-    console.log(revarId + " has now " + propName + " set to " + propValue);
 });
 
 // You are able to use any count of Revars in application.
@@ -99,7 +94,7 @@ function useCounterIncrement() {
         }, 1000);
 
         return () => clearInterval(interval); 
-    })
+    }, [])
 }
 
 function Counter() {
