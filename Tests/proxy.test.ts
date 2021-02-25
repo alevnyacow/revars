@@ -60,10 +60,27 @@ test("nested number proxy at third level", () => {
 
     proxy.a.b = { c: 0, d: [] };
     proxy.a.b.c = 10;
-    console.log(proxy);
     proxy.a.b.d.push({ b: 64 });
 
     proxy.a.b.d[0].b = 55;
 
     expect(count).toBe(65);
+});
+
+test("array proxy", () => {
+    let count = 0;
+    const source = { a: [0] };
+    const proxy = createRevarProxy([
+        () => {
+            count++;
+        }
+    ])(revarId)(source);
+
+    proxy.a.push(6);
+    proxy.a.splice(0, 1);
+    proxy.a.push(7);
+    proxy.a.pop();
+    proxy.a.shift();
+
+    expect(count).toBeGreaterThanOrEqual(5);
 });

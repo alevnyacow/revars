@@ -37,10 +37,12 @@ export function createRevarProxy(
                             params = params.map((x) =>
                                 toRevarProxyIfNeeded(revarId, x)
                             );
-                            target.push(...params);
+                            const newLength = target.push(...params);
                             handlers.forEach((handler) =>
                                 handler(revarId, prop, params)
                             );
+
+                            return newLength;
                         };
                     }
                     if (prop === "pop") {
