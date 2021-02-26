@@ -45,24 +45,6 @@ export function createRevarProxy(
                             return newLength;
                         };
                     }
-                    if (prop === "pop") {
-                        return function () {
-                            const result = target.pop();
-                            handlers.forEach((handler) =>
-                                handler(revarId, prop, result)
-                            );
-                            return result;
-                        };
-                    }
-                    if (prop === "shift") {
-                        return function () {
-                            const result = target.shift();
-                            handlers.forEach((handler) =>
-                                handler(revarId, prop, result)
-                            );
-                            return result;
-                        };
-                    }
                     return target[prop as any];
                 }
 

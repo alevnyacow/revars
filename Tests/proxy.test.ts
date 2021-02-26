@@ -71,16 +71,29 @@ test("array proxy", () => {
     let count = 0;
     const source = { a: [0] };
     const proxy = createRevarProxy([
-        () => {
+        (a, b, c) => {
+            // console.log(a);
+            console.log(b);
+            // console.log(c);
             count++;
         }
     ])(revarId)(source);
 
+    console.log("``push");
     proxy.a.push(6);
+
+    console.log("``splice");
     proxy.a.splice(0, 1);
+
+    console.log("``push");
     proxy.a.push(7);
+
+    console.log("``pop");
     proxy.a.pop();
+
+    console.log("``shift");
     proxy.a.shift();
 
+    console.log(count);
     expect(count).toBeGreaterThanOrEqual(5);
 });
