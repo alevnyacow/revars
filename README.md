@@ -19,7 +19,7 @@ Revars (React variables) is a React **state management system** which is
 
 When you use [buildRevar](#build-revar) method, you obtain a tuple of three elements.
 
-- **First element** is a Revar itself. Basically it behaves like a usual object with mutable fields so you can modify it anywhere in your code.
+- **First element** is a Revar itself. Basically it behaves like a usual object with mutable fields so you can modify it anywhere in your code (including array mutating methods).
 - **Second element** is a React hook. Use it in functional components to make them rerender when according revar is modified.
 - **Third element** is a function can be used to add plugins for current Revar (**unstable experimental feature for now**).
 
