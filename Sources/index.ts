@@ -15,7 +15,9 @@ type Plugin = (
 
 export function buildRevar<T extends object>(initialState: T) {
     const revarId = getRandomString();
-    const plugins: Record<string, Array<Plugin>> = { revarId: [callRerenders] };
+    const plugins: Record<string, Array<Plugin>> = {
+        [revarId]: [callRerenders]
+    };
     const revar = createRevarProxy(plugins[revarId])(revarId)(initialState);
 
     function useRevarRerender() {
