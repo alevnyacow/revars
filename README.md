@@ -1,5 +1,4 @@
 # <p align="center">![Revars logo](/revars.svg "Logo")</p>
-
 ![npm](https://img.shields.io/npm/v/revars)
 ![GitHub](https://img.shields.io/github/license/alevnyacow/revars)
 ![GitHub last commit](https://img.shields.io/github/last-commit/alevnyacow/revars)
@@ -7,7 +6,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![Minzipped Size](https://badgen.net/bundlephobia/minzip/revars)
 
-# <p align="center">💫 About</p>
+# 💫 About
 
 Revars (React variables) is a React **state management system** which is
 
@@ -16,7 +15,7 @@ Revars (React variables) is a React **state management system** which is
 -  extremely lightweight and dependency-free
 -  no boilerplate code needed
 
-# <p align="center">📚 Core concept</p>
+# 📚 Core concept
 
 When you use [buildRevar](#build-revar) method, you obtain a tuple of three elements.
 
@@ -48,7 +47,7 @@ const [rectangle, useRectangleRerender] = buildRevar({
 
 Simple and powerful! 🚀
 
-# <p align="center">📔 API</p>
+# 📔 API
 
 There is one method you can import from this package.
 
@@ -59,7 +58,7 @@ function buildRevar<T extends object>(initialState: T): [
     // Revar
     T,
 
-    // hook which provides functional components rerendering
+    // hook
     () => void,
 
     // plugin adder
@@ -73,7 +72,9 @@ function buildRevar<T extends object>(initialState: T): [
 ]
 ```
 
-# <p align="center">✨ Simple example</p>
+Returns a tuple of a Revar itself and a hook which provides functional components rerendering.
+
+# ✨ Simple example
 
 ```ts
 import React, { useEffect } from "react";
@@ -110,6 +111,6 @@ function Counter() {
 }
 ```
 
-# <p align="center">🌌 More complex examples</p>
+# 🌌 More complex examples
 
 - **[Todo List](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)**
