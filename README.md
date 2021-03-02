@@ -12,7 +12,7 @@ Revars (React variables) is a React **state management system** which is
 
 -  very simple and intuitive
 -  incredible fast
--  extremely lightweight and dependency-free
+-  extremely lightweight *(only 1kb gzipped!)* and dependency-free
 -  no boilerplate code needed
 
 # 📚 Core concept
@@ -38,14 +38,12 @@ const [analytics, useAnalyticsRerender] = buildRevar<Analytics>({
     events: []
 });
 
-// You are able to use any count of Revars in application.
+// You are able to use any count of Revars in application
 const [rectangle, useRectangleRerender] = buildRevar({ 
     width: 0, 
     height: 0 
 });
 ```
-
-Simple and powerful! 🚀
 
 # 📔 API
 
@@ -55,24 +53,23 @@ There is one method you can import from this package.
 
 ```ts
 function buildRevar<T extends object>(initialState: T): [
-    // Revar
     T,
-
-    // hook
     () => void,
-
-    // plugin adder
-    (
-        plugin: (
-            revarId: string, 
-            propName?: string | number | symbol, 
-            propValue: any
-        ) => void
-    ) => void
+    (plugin: Plugin) => void
 ]
 ```
 
-Returns a tuple of a Revar itself and a hook which provides functional components rerendering.
+# 🧩 Exported types
+
+There is one exported type in this package which is plugin function signature.
+
+```ts
+type Plugin = (
+    revarId: string,
+    propertyName?: string | number | symbol,
+    propertyValue?: any
+) => void;
+```
 
 # ✨ Simple example
 
