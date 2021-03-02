@@ -79,15 +79,10 @@ import { buildRevar } from "revars";
 
 const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
 
-const CounterService = {
-    incrementCounter: () => { counter.currentValue++; },
-    resetCounter: () => { counter.currentValue = 0; }
-};
-
 function useCounterIncrement() {
     useEffect(() => {
         const interval = setInterval(() => {
-            CounterService.incrementCounter();
+            counter.currentValue++;
         }, 1000);
 
         return () => clearInterval(interval); 
@@ -95,13 +90,13 @@ function useCounterIncrement() {
 }
 
 function Counter() {
-    // hook to make component rerender on every counter Revar change
+    // hook to make component rerender on counter Revar changes
     useCounterRerender();
     useCounterIncrement();
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        <button onClick={() => CounterService.resetCounter()}>
+        <button onClick={() => { counter.currentValue = 0; }}>
             Reset counter
         </button>
     </div>
