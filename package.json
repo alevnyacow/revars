@@ -1,7 +1,7 @@
 {
     "name": "revars",
     "description": "Extremely lightweight and simple React state management",
-    "version": "4.6.5",
+    "version": "4.6.6",
     "author": "alevnyacow",
     "main": "Transpiled/index.js",
     "types": "Transpiled/index.d.ts",

@@ -90,7 +90,6 @@ function useCounterIncrement() {
 }
 
 function Counter() {
-    // hook to make component rerender on counter Revar changes
     useCounterRerender();
     useCounterIncrement();
 
