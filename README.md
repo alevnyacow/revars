@@ -6,42 +6,38 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![Minzipped Size](https://badgen.net/bundlephobia/minzip/revars)
 
-# 💫 About
+# 💫 What is it?
 
 Revars (React variables) is a React **state management system** which is
 
 -  very simple and intuitive
--  incredible fast
--  extremely lightweight *(only 1kb gzipped!)* and dependency-free
+-  incredibly fast
+-  extremely lightweight **(only 1kb gzipped!)** and dependency-free
 -  no boilerplate code needed
 
-# 📚 Core concept
+# ⭐ Core concept
 
-When you use [buildRevar](#build-revar) method, you obtain a tuple of three elements.
+This package makes it possible to **turn any object into a React application state part**, like, for real. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
 
-- **First element** is a Revar itself. Basically it behaves like a usual object with mutable fields so you can modify it anywhere in your code (including array mutating methods).
-- **Second element** is a React hook. Use it in functional components to make them rerender when according revar is modified.
+# ⚙ How does it work?
+
+Revar is a recursive JS-proxy, which notifies subscribed components and make them rerender every time this Revar is changed somehow. Components can subscribe for this Revar changes by using hook according to this revar.
+
+So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements.
+
+- **First element** is a Revar itself
+- **Second element** is a React hook
 - **Third element** is a function can be used to add plugins for current Revar (**unstable experimental feature for now**).
 
 Take a look at following example:
 
 ```ts
-type Analytics = {
-    clicks: number;
-    secondsSpentOnPage: number;
-    events: Array<string>;
-};
-
-const [analytics, useAnalyticsRerender] = buildRevar<Analytics>({ 
-    clicks: 0, 
-    secondsSpentOnPage: 0,
-    events: []
-});
-
-// You are able to use any count of Revars in application
-const [rectangle, useRectangleRerender] = buildRevar({ 
-    width: 0, 
-    height: 0 
+const [testRevar, useTestRevarRerender] = buildRevar({ 
+    numValue: 0,
+    objValue: {
+        nestedStrValue: "",
+        nestedNumArrayValue: [0]
+    }
 });
 ```
 
