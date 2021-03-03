@@ -21,13 +21,13 @@ This package makes it possible to **turn any object into a React application sta
 
 # ⚙ How does it work?
 
-Revar is a recursive JS-proxy, which notifies subscribed components and make them rerender every time this Revar is changed somehow. Components can subscribe for this Revar changes by using hook according to this revar.
+Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using hook according to this revar.
 
 So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements.
 
 - **First element** is a Revar itself
 - **Second element** is a React hook
-- **Third element** is a function can be used to add plugins for current Revar (**unstable experimental feature for now**).
+- **Third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now).
 
 Take a look at following example:
 
