@@ -17,11 +17,11 @@ Revars (React variables) is a React **state management system** which is
 
 # ⭐ Core concept
 
-This package makes it possible to **turn any object into a React application state part**, like, for real. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
+This package makes it possible to **turn any object into a React application state part**. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
 
 # ⚙ How does it work?
 
-Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using hook according to this revar.
+Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using according hook.
 
 So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements.
 
