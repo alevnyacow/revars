@@ -51,20 +51,8 @@ There is one method you can import from this package.
 function buildRevar<T extends object>(initialState: T): [
     T,
     () => void,
-    (plugin: Plugin) => void
+    (plugin: Plugin) => void // not stable for now
 ]
-```
-
-# 🧩 Exported types
-
-There is one exported type in this package which is plugin function signature.
-
-```ts
-type Plugin = (
-    revarId: string,
-    propertyName?: string | number | symbol,
-    propertyValue?: any
-) => void;
 ```
 
 # ✨ Simple example
