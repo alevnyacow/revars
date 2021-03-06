@@ -12,7 +12,7 @@ Revars (React variables) is a React **state management system** which is
 
 -  very simple and intuitive
 -  incredibly fast
--  extremely lightweight **(only 1kb gzipped!)** and dependency-free
+-  extremely lightweight (only 1kb gzipped!) and dependency-free
 -  no boilerplate code needed
 
 # ⭐ Core concept
