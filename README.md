@@ -26,7 +26,7 @@ Revar is a recursive JS-proxy, which notifies subscribed components making them 
 So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements.
 
 - **First element** is a Revar itself
-- **Second element** is a React hook
+- **Second element** is the React hook
 - **Third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now).
 
 Take a look at following example:
