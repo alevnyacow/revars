@@ -29,7 +29,7 @@ So, when you use [buildRevar](#build-revar) method, you obtain an array of three
 
 # 💡 Simple example
 
-```ts
+```tsx
 import React, { useEffect } from "react";
 import { buildRevar } from "revars";
 
@@ -40,8 +40,14 @@ function Counter() {
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
+        <button onClick={() => { counter.currentValue--; }}>
+            Decrement counter
+        </button>
         <button onClick={() => { counter.currentValue = 0; }}>
             Reset counter
+        </button>
+        <button onClick={() => { counter.currentValue++; }}>
+            Increment counter
         </button>
     </div>
 }
@@ -55,7 +61,7 @@ function Counter() {
 
 There is one method you can import from this package.
 
-## <a id='build-revar'></a>**buildRevar**
+### <a id='build-revar'></a>**buildRevar**
 
 ```ts
 function buildRevar<T extends object>(initialState: T): [
