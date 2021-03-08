@@ -30,24 +30,22 @@ So, when you use [buildRevar](#build-revar) method, you obtain an array of three
 # 💡 Simple example
 
 ```tsx
-import React, { useEffect } from "react";
+import React from "react";
 import { buildRevar } from "revars";
 
 const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
+
+setInterval(() => {
+    counter.currentValue++;
+}, 1000);
 
 function Counter() {
     useCounterRerender();
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        <button onClick={() => { counter.currentValue--; }}>
-            Decrement counter
-        </button>
         <button onClick={() => { counter.currentValue = 0; }}>
             Reset counter
-        </button>
-        <button onClick={() => { counter.currentValue++; }}>
-            Increment counter
         </button>
     </div>
 }
