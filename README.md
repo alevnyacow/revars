@@ -89,3 +89,4 @@ function Counter() {
 # 🌌 More complex examples
 
 - **[Todo List](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)**
+- **[Bored API Example](https://codesandbox.io/s/revars-bored-api-example-d4oiw)**
