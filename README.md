@@ -8,7 +8,7 @@
 
 # 🔍 What is it?
 
-Revars (React variables) is a React **state management system** which is
+Revars (React variables) is a **React state management system** which is
 
 -  very simple and intuitive
 -  incredibly fast
@@ -17,7 +17,7 @@ Revars (React variables) is a React **state management system** which is
 
 # 🧰 How does it work?
 
-This package makes it possible to **turn any object into a React application state part**. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
+This package makes it possible to *turn any object into a mutable React application state part in a one simple step*. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
 
 Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using according hook.
 
@@ -35,16 +35,14 @@ import { buildRevar } from "revars";
 
 const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
 
-setInterval(() => {
-    counter.currentValue++;
-}, 1000);
+setInterval(() => counter.currentValue++, 1000);
 
 function Counter() {
     useCounterRerender();
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        <button onClick={() => { counter.currentValue = 0; }}>
+        <button onClick={() => counter.currentValue = 0}>
             Reset counter
         </button>
     </div>
@@ -55,7 +53,7 @@ function Counter() {
 - **[Todo List](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)**
 - **[Bored API Example](https://codesandbox.io/s/revars-bored-api-example-d4oiw)**
 
-# 📔 API
+# 📜 API
 
 There is one method you can import from this package.
 
