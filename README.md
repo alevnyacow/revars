@@ -25,7 +25,7 @@ So, when you use [buildRevar](#build-revar) method, you obtain an array of three
 
 - **First element** is a Revar itself
 - **Second element** is the React hook
-- **Third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now).
+- **Third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now)
 
 # 💡 Simple example
 
