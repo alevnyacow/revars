@@ -22,11 +22,11 @@ This package makes it possible to *turn any object into a mutable React applicat
 
 Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using according hook.
 
-So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements.
+So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements:
 
-- **First element** is a Revar itself
-- **Second element** is the React hook
-- **Third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now)
+- **first element** is a Revar itself
+- **second element** is the React hook
+- **third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now)
 
 # 💡 Simple example
 
