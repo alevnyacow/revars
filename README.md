@@ -1,4 +1,4 @@
-# <p align="center">![Revars logo](/revars.svg "Logo")</p>
+# <p align="center">![Revars logo](/logo.png "Logo")</p>
 ![npm](https://img.shields.io/npm/v/revars)
 ![GitHub](https://img.shields.io/github/license/alevnyacow/revars)
 ![GitHub last commit](https://img.shields.io/github/last-commit/alevnyacow/revars)
