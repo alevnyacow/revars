@@ -10,23 +10,14 @@
 
 Revars (React variables) is a **React state management system** which is
 
--  mutable
 -  very simple and intuitive
 -  incredibly fast
--  extremely lightweight (only 1kb gzipped!) and dependency-free
--  no boilerplate code needed
+-  extremely lightweight (only 1kb gzipped!)
 
-# 🧰 How does it work?
+# 📖 Codesandbox examples
 
-This package makes it possible to *turn any object into a mutable React application state part in a one simple step*. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
-
-Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using according hook.
-
-So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements:
-
-- **first element** is a Revar itself
-- **second element** is the React hook
-- **third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now)
+- **[Todo List](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)**
+- **[Bored API Example](https://codesandbox.io/s/revars-bored-api-example-d4oiw)**
 
 # 💡 Simple example
 
@@ -49,10 +40,6 @@ function Counter() {
     </div>
 }
 ```
-# 📖 More complex examples
-
-- **[Todo List](https://codesandbox.io/s/revars-complex-todos-demo-77qo3)**
-- **[Bored API Example](https://codesandbox.io/s/revars-bored-api-example-d4oiw)**
 
 # 📜 API
 
@@ -67,3 +54,15 @@ function buildRevar<T extends object>(initialState: T): [
     (plugin: Plugin) => void // not stable for now
 ]
 ```
+
+# 🧰 How does it work?
+
+This package makes it possible to *turn any object into a mutable React application state part in a one simple step*. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
+
+Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using according hook.
+
+So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements:
+
+- **first element** is a Revar itself
+- **second element** is the React hook
+- **third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now)
