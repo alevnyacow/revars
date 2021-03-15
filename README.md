@@ -43,7 +43,7 @@ function Counter() {
 
 # 📜 API
 
-There is one method you can import from this package.
+There is one method you can import from this package:
 
 ### <a id='build-revar'></a>**buildRevar**
 
