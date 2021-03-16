@@ -26,20 +26,31 @@ import React from "react";
 import { buildRevar } from "revars";
 
 const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
+const [stats, useStatsRerenderer] = buildRevar({ buttonClicks: { reset: 0 } });
 
 setInterval(() => counter.currentValue++, 1000);
 
 function Counter() {
     useCounterRerender();
+    useStatsRerenderer();
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
-        <button onClick={() => counter.currentValue = 0}>
-            Reset counter
+        <button onClick={() => {
+            counter.currentValue = 0;
+            stats.buttonClicks.reset++;
+        }}>
+            Reset counter (clicked {stats.buttonClicks.reset} times)
         </button>
     </div>
 }
 ```
+
+Really, like **this** simple. So, let's sum it up:
+
+- You don't need any specific functions to update Revar - feel free to treat it like a usual object
+- Use React hook according to a Revar to make functional component rerender whenever this Revar updates 
+- You are able to use any count of Revars in your application
 
 # 📜 API
 
@@ -48,21 +59,5 @@ There is one method you can import from this package:
 ### <a id='build-revar'></a>**buildRevar**
 
 ```ts
-function buildRevar<T extends object>(initialState: T): [
-    T,
-    () => void,
-    (plugin: Plugin) => void // not stable for now
-]
+function buildRevar<T>(initialState: T): [T, () => void]
 ```
-
-# 🧰 How does it work?
-
-This package makes it possible to *turn any object into a mutable React application state part in a one simple step*. Take an object of any structure (*arrays and any nesting levels are allowed*), pass it through [buildRevar](#build-revar) method and your state is ready to go! Also you are able to use any count of Revars in your application. Simple and powerful!
-
-Revar is a recursive JS-proxy, which notifies subscribed components making them rerender every time this Revar is modified. Components can subscribe for this Revar changes by using according hook.
-
-So, when you use [buildRevar](#build-revar) method, you obtain an array of three elements:
-
-- **first element** is a Revar itself
-- **second element** is the React hook
-- **third element** is a function can be used to add plugins for current Revar (unstable experimental feature for now)
