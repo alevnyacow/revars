@@ -26,7 +26,9 @@ import React from "react";
 import { buildRevar } from "revars";
 
 const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
-const [stats, useStatsRerenderer] = buildRevar({ buttonClicks: { reset: 0 } });
+const [stats, useStatsRerenderer] = buildRevar({ 
+    buttonClicks: { reset: 0 } 
+});
 
 setInterval(() => counter.currentValue++, 1000);
 
