@@ -53,6 +53,7 @@ Really, like **this** simple. So, let's sum it up:
 - you don't need any specific functions to update Revar - feel free to treat it like a usual object
 - use React hook according to a Revar to make functional component rerender whenever this Revar updates 
 - you are able to use any count of Revars in your application
+- you can modify Revars anywhere - both in components and React-independent code parts
 
 # 📜 API
 
