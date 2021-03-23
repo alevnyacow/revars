@@ -32,7 +32,7 @@ const [stats, useStatsRerender] = buildRevar({
     buttonClicks: { reset: 0 } 
 });
 
-// changing counter every second outside of a component
+// changing counter Revar every second outside of a component
 setInterval(() => counter.currentValue++, 1000);
 
 function Counter() {
