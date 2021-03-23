@@ -25,21 +25,28 @@ Revars (React variables) is a **React state management system** which is
 import React from "react";
 import { buildRevar } from "revars";
 
+// registering counter Revar
 const [counter, useCounterRerender] = buildRevar({ currentValue: 0 });
+// registering stats Revar
 const [stats, useStatsRerender] = buildRevar({ 
     buttonClicks: { reset: 0 } 
 });
 
+// changing counter every second outside of a component
 setInterval(() => counter.currentValue++, 1000);
 
 function Counter() {
+    // subscribing on counter Revar changes
     useCounterRerender();
+    // subscribing on stats Revar changer
     useStatsRerender();
 
     return <div>
         <span>Counter value - {counter.currentValue}</span>
         <button onClick={() => {
+            // changing counter Revar in a component
             counter.currentValue = 0;
+            // changing stats Revar in a component
             stats.buttonClicks.reset++;
         }}>
             Reset counter (clicked {stats.buttonClicks.reset} times)
