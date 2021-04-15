@@ -7,7 +7,7 @@ import {
 } from "./Services";
 import { getRandomString } from "./Utils";
 
-export type Plugin = (
+type Plugin = (
     revarId: string,
     propertyName?: string | number | symbol,
     propertyValue?: any
