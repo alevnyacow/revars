@@ -38,7 +38,7 @@ setInterval(() => counter.currentValue++, 1000);
 function Counter() {
     // subscribing on counter Revar changes
     useCounterRerender();
-    // subscribing on stats Revar changer
+    // subscribing on stats Revar changes
     useStatsRerender();
 
     return <div>
